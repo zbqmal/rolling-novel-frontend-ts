@@ -13,6 +13,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { accountIconStyle } from "./styles";
+import { ACCOUNT_MENU_OPTIONS } from "../../../constants";
+import { signIn, signUp } from "@/api";
 
 export const TopMenuBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -28,9 +30,30 @@ export const TopMenuBar = () => {
     setAnchorEl(null);
   };
 
-  const handleMenuItemClick = (option: string) => {
-    console.log(`${option} clicked`);
+  const handleMenuItemClick = async (option: string) => {
     handleClose();
+
+    switch (option) {
+      case ACCOUNT_MENU_OPTIONS.SIGN_UP:
+        try {
+          const result = await signUp("username_123", "password_123");
+          console.log("result: ", result);
+        } catch (error) {
+          console.error("Error signing up:", error);
+        }
+        break;
+      case ACCOUNT_MENU_OPTIONS.SIGN_IN:
+        try {
+          const result = await signIn();
+          console.log("result: ", result);
+        } catch (error) {
+          console.error("Error signing in:", error);
+        }
+        break;
+      default:
+        console.error(`Option ${option} does not exist`);
+        break;
+    }
   };
 
   return (
@@ -68,9 +91,15 @@ export const TopMenuBar = () => {
           horizontal: "center",
         }}
       >
-        <MenuItem onClick={() => handleMenuItemClick("Test")}>Test</MenuItem>
-        <MenuItem onClick={() => handleMenuItemClick("Sign In")}>
-          Sign In
+        <MenuItem
+          onClick={() => handleMenuItemClick(ACCOUNT_MENU_OPTIONS.SIGN_UP)}
+        >
+          {ACCOUNT_MENU_OPTIONS.SIGN_UP}
+        </MenuItem>
+        <MenuItem
+          onClick={() => handleMenuItemClick(ACCOUNT_MENU_OPTIONS.SIGN_IN)}
+        >
+          {ACCOUNT_MENU_OPTIONS.SIGN_IN}
         </MenuItem>
       </Menu>
     </Box>
