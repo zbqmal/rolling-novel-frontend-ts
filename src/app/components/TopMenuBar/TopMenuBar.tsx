@@ -14,7 +14,7 @@ import React, { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { accountIconStyle } from "./styles";
 import { ACCOUNT_MENU_OPTIONS } from "../../../constants";
-import { signIn, signUp } from "@/api";
+import { signIn, signUp } from "../../../api";
 
 export const TopMenuBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
