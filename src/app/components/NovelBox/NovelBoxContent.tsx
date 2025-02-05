@@ -1,18 +1,35 @@
 "use client";
 
 import React, { useState } from "react";
-import { NovelBoxContentProps, NovelBoxContentState } from "./types";
+import { NovelBoxContentState } from "./types";
 import { NovelBoxContentStyles } from "./styles";
+import { useRouter } from "next/navigation";
 
-const NovelBoxContent = ({ title, description }: NovelBoxContentProps) => {
+interface NovelBoxContentProps {
+  id: string;
+  title: string;
+  description: string;
+}
+
+const NovelBoxContent: React.FC<NovelBoxContentProps> = ({
+  id,
+  title,
+  description,
+}) => {
+  const router = useRouter();
   const [novelBoxContentState, setNovelBoxContentState] =
     useState<NovelBoxContentState>({
       title,
       description,
     });
 
+  const pushToNovelDetailsPage = () => router.push(`novel/${id}`);
+
   return (
-    <div style={NovelBoxContentStyles.box}>
+    <div
+      style={NovelBoxContentStyles.box}
+      onClick={() => pushToNovelDetailsPage()}
+    >
       <h2 style={NovelBoxContentStyles.title}>{novelBoxContentState.title}</h2>
       <p style={NovelBoxContentStyles.description}>
         {novelBoxContentState.description}
