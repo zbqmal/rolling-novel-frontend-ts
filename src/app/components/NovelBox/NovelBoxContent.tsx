@@ -29,6 +29,7 @@ const NovelBoxContent: React.FC<NovelBoxContentProps> = ({
     <div
       style={NovelBoxContentStyles.box}
       onClick={() => pushToNovelDetailsPage()}
+      data-testid={`novel-box-container-${id}`}
     >
       <h2 style={NovelBoxContentStyles.title}>{novelBoxContentState.title}</h2>
       <p style={NovelBoxContentStyles.description}>

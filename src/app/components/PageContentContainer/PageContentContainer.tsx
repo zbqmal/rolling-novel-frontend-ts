@@ -1,12 +1,14 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { pageContentContainerStyles } from "./styles";
-import { PageContentContainerProps } from "./types";
 
-const PageContentContainer: React.FC<PageContentContainerProps> = ({
-  width,
-  height,
-  children,
-}) => {
+interface PageContentContainerProps {
+  width?: string;
+  height?: string;
+}
+
+const PageContentContainer: React.FC<
+  PropsWithChildren<PageContentContainerProps>
+> = ({ width, height, children }) => {
   return <div style={pageContentContainerStyles.container}>{children}</div>;
 };
 
