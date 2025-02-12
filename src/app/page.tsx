@@ -9,12 +9,12 @@ const Page: React.FC = () => {
     <div style={fullHeightStyles}>
       <TopMenuBar />
       <PageContentContainer>
-        <NovelBoxContent title="title1" description="description1" />
-        <NovelBoxContent title="title2" description="description2" />
-        <NovelBoxContent title="title3" description="description3" />
-        <NovelBoxContent title="title4" description="description4" />
-        <NovelBoxContent title="title5" description="description5" />
-        <NovelBoxContent title="title6" description="description6" />
+        <NovelBoxContent id="1" title="title1" description="description1" />
+        <NovelBoxContent id="2" title="title2" description="description2" />
+        <NovelBoxContent id="3" title="title3" description="description3" />
+        <NovelBoxContent id="4" title="title4" description="description4" />
+        <NovelBoxContent id="5" title="title5" description="description5" />
+        <NovelBoxContent id="6" title="title6" description="description6" />
       </PageContentContainer>
     </div>
   );
